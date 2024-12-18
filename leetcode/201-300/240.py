@@ -1,6 +1,8 @@
 """
-240. 搜索二维矩阵 II
-binary search
+@title:      240. 搜索二维矩阵 II
+@difficulty: 简单
+@importance: 4/5
+@tags:       二分
 """
 
 from typing import List
@@ -9,7 +11,10 @@ from typing import List
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         """
-        binary search
+        @tags:              二分
+        @time complexity:   O(logn)
+        @space complexity:  O(1)
+        @description:       两次二分
         """
         n = len(matrix)
         m = len(matrix[0])
@@ -38,7 +43,3 @@ class Solution:
                 return True
 
         return False
-
-
-Solution().searchMatrix([[1, 4, 7, 11, 15], [2, 5, 8, 12, 19], [
-    3, 6, 9, 16, 22], [10, 13, 14, 17, 24], [18, 21, 23, 26, 30]], 5)

@@ -37,7 +37,7 @@ class Solution:
         """
         n = len(nums)
 
-        # 去除对标记阶段有影响的值：负数和0（0可去除可不去除）
+        # 去除对标记阶段有影响的值：负数和0
         for i in range(n):
             if nums[i] <= 0:
                 nums[i] = n + 1

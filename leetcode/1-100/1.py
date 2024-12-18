@@ -15,6 +15,7 @@ class Solution:
         @time complexity:   O(n)
         @space complexity:  O(n)
         @description:       target - a = b 当遍历到a的时我们需要b，提前建立b和b的下标的关系即可
+                            💲两数之和的解题思路还是很常见的
         """
         hash_map = {}
         for i, v in enumerate(nums):

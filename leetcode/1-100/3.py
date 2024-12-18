@@ -1,25 +1,15 @@
 """
-3. 无重复字符的最长子串
-difficulty: 简单
-importance: 4/5
-tags:       双指针，滑动窗口
+@title:      3. 无重复字符的最长子串
+@difficulty: 简单
+@importance: 5/5
+@tags:       haspmap 指针 滑动窗口
 """
+
+from collections import defaultdict
 
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        i = -1  # 慢指针 从-1开始满足长度为1的字符串
-        res = 0
-        dic = {}
-        for j in range(len(s)):  # j 是快指针
-            cur_s = s[j]
-            if cur_s in dic:
-                i = max(dic[s[j]], i)
-            dic[cur_s] = j
-            res = max(j - i, res)
-        return res
-
-    def lengthOfLongestSubstring2(self, s: str) -> int:
         dic = {}
         res = tmp = 0
         for j in range(len(s)):
@@ -30,13 +20,20 @@ class Solution:
         return res
 
     def lengthOfLongestSubstring(self, s: str) -> int:
-        l = res = 0
-        dic = {}
-
-        for i, c in enumerate(s):
-            if c in dic and dic[c] >= l:
-                res = max(res, i - l)
-                l = dic[c] + 1
-            dic[c] = i
-
-        return max(res, len(s) - l)
+        """
+        @tags:              指针 滑动窗口
+        @time complexity:   O(n)
+        @space complexity:  O(n)
+        @description:       滑动窗口，确保窗口内的字母只出现一次。
+        """
+        dic = defaultdict(int)
+        l = ans = 0
+        for i, v in enumerate(s):
+            dic[v] += 1
+            if dic[v] > 1:
+                if i - l > ans:
+                    ans = i - l
+                while dic[v] > 1:
+                    dic[s[l]] -= 1
+                    l += 1
+        return max(ans, len(s) - l)
