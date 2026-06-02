@@ -1,7 +1,7 @@
 """
 @title:      128. 最长连续序列
 @difficulty: 中等
-@importance: 4/5
+@importance: 5/5
 @tags:       并查集 hashmap
 """
 
@@ -53,4 +53,24 @@ class Solution:
                     if map[i - 1][1] in map:
                         map[map[i - 1][1]] = map[i]
                     map[i - 1] = map[i]
+        return ans
+
+    def longestConsecutive(self, nums: List[int]) -> int:
+        """
+        @tags:              hashmap
+        @time complexity:   O(n)
+        @space complexity:  O(n)
+        @description:       找到一个区间的最左侧元素后，就判断区间长度
+        """
+        ans = 0
+        st = set(nums)  # 把 nums 转成哈希集合
+        for x in st:
+            # 不是最左侧
+            if x - 1 in st:
+                continue
+            # 向右计算连续的长度
+            y = x + 1
+            while y in st:
+                y += 1
+            ans = max(ans, y - x)
         return ans

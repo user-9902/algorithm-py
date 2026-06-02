@@ -1,57 +1,64 @@
 """
-72. 编辑距离
-word1 -> word2 等价于 word2 -> word1
-问题转化将word1和word2转化为相同字符的最小操作数
-对word1的插入，删除，替换
-等价于word1插入，word2插入，word1或word2替换
-dp[i][j] 表示为 word1第i位之前的字符，转为word2第j位之前的字符所需的最小操作步骤
-
-word[i] = word[j]: dp[i][j] = dp[i-1][j-1]
-word[i] != word[j]: dp[i][j] = min(dp[i-1][j] + 1, dp[i][j-1] + 1, dp[i-1][j-1] + 1)
+@title:      72. 编辑距离
+@difficulty: 中等
+@importance: 6/5
+@tags:       LPS dp
 """
+from functools import cache
+from math import inf
 
 
 class Solution:
+    """
+    word1 -> word2 等价于 word2 -> word1
+    对word1的插入，删除，替换 -> 等价于word1插入，word2插入，word1或word2替换
+
+    dp[i][j] 表示为 word1第i位之前的字符，转为word2第j位之前的字符所需的最小操作步骤
+    word[i] = word[j]: dp[i][j] = dp[i-1][j-1]
+    word[i] != word[j]: dp[i][j] = min(dp[i-1][j] + 1, dp[i][j-1] + 1, dp[i-1][j-1] + 1)
+    """
+
     def minDistance(self, word1: str, word2: str) -> int:
-        len_1 = len(word1)
-        len_2 = len(word2)
-
-        dp = []
-        for i in range(len_1 + 1):
-            dp.append([i] + [0]*len_2)
-        for j in range(len_2 + 1):
-            dp[0][j] = j
-        for x in range(1, len_1+1):
-            for y in range(1, len_2+1):
-                # 当前位置的字符相同，则无需操作，最小操作不步速即为dp[i - 1][j - 1]
-                if word1[x - 1] == word2[y - 1]:
-                    dp[x][y] = dp[x - 1][y-1]
-                else:
-                    # 否则最小步长为 dp[i-1][j]：word1 添加一个元素 dp[i][j-1] word2 添加一个元素 或者替换实现
-                    dp[x][y] = min(dp[x][y-1], dp[x-1][y], dp[x-1][y-1]) + 1
-        return dp[len_1][len_2]
-
-    def minDistance2(self, word1: str, word2: str) -> int:
         """
-        dp
-        压缩至一维
+        @tags:              递归
+        @time complexity:   O(n*m)   
+        @space complexity:  O(n*m)
         """
-        n = len(word1)
-        m = len(word2)
+        n, m = len(word1), len(word2)
 
-        f = list(range(m+1))
+        @cache
+        def dfs(i, j):
+            # 边界条件。word1为空字符串，那么需要插入 j+1 个字符串变成 word2
+            if i < 0:
+                return j + 1
+            elif j < 0:
+                return i + 1
+            # 两种情况
+            elif word1[i] == word2[j]:
+                return dfs(i - 1, j - 1)
+            else:
+                return min(dfs(i - 1, j - 1), dfs(i, j - 1), dfs(i - 1, j)) + 1
 
-        for i in range(1, n+1):
-            pre = f[0]
-            f[0] = i
-            for j in range(1, m+1):
-                tmp = f[j]
-                if word1[i-1] == word2[j-1]:
-                    f[j] = pre
+        return dfs(n - 1, m - 1)
+
+    def minDistance(self, word1: str, word2: str) -> int:
+        """
+        @tags:              dp
+        @time complexity:   O(n*m)   
+        @space complexity:  O(n*m)  可以压缩至一维，观察状态方程，f[i][j] 依赖的是相邻的上、左、左上三个状态
+        @description:       递归翻译成递推
+        """
+        n, m = len(word1), len(word2)
+        f = [[0] * (m + 1) for _ in range(n + 1)]
+        for i in range(n+1):
+            f[i][0] = i
+        for i in range(m+1):
+            f[0][i] = i
+        for i in range(n):
+            for j in range(m):
+                if word1[i] == word2[j]:
+                    f[i + 1][j + 1] = f[i][j]
                 else:
-                    f[j] = min(f[j-1], f[j], pre) + 1
-                pre = tmp
-        return f[-1]
-
-
-Solution().minDistance('horse', 'ros')
+                    f[i + 1][j + 1] = min(f[i + 1][j], f[i]
+                                          [j + 1], f[i][j]) + 1
+        return f[n][m]

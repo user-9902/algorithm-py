@@ -38,12 +38,7 @@ class Solution:
         toIdx = wordList.index(endWord)
 
         def check(w1, w2):
-            m = len(w1)
-            cnt = 0
-            for k in range(m):
-                if w1[k] != w2[k]:
-                    cnt += 1
-            return cnt <= 1
+            return sum(ch1 != ch2 for ch1, ch2 in zip(w1, w2)) == 1
 
         # 建图 邻接表
         n = len(wordList)

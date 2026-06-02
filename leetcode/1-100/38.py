@@ -32,3 +32,7 @@ for i in range(2, 31):
 class Solution:
     def countAndSay(self, n: int) -> str:
         return ans[n-1]
+
+
+for i in ans:
+    print(i)

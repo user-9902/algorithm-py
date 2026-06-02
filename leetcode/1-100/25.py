@@ -1,8 +1,8 @@
 """
-25. K 个一组翻转链表
-遍历链表
-记录遍历次数，达到k次时反转，
-注意：有无反转影响返回的头节点；反转的节点如何与后续节点链接
+@title:      25. K 个一组翻转链表
+@difficulty: 中等
+@importance: 4/5
+@tags:       链表
 """
 
 from typing import Optional
@@ -15,56 +15,51 @@ class ListNode:
 
 
 class Solution:
+
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        """
+        @tags:              链表
+        @time complexity:   O(n)
+        @space complexity:  O(1)
+        @description:       💲画图，分析过程
+        """
+        cur = head
         ans = None
-
-        cur = head  # 遍历
-        start = cur  # 反转起始点
-        cnt = 0  # 计数
-
-        pre_s = None  # 前一轮反转，反转后的尾巴
+        p = None
         while cur:
-            cnt += 1
-            cur = cur.next
-            # 开始反转
+            f = cur
+
+            # 计算有没有 k 个数
+            cnt = 0
+            t = cur
+            for _ in range(k):
+                if cur:
+                    cur = cur.next
+                    cnt += 1
+
+            # 反转
+            pre = None
             if cnt == k:
-                cnt = 0
-
-                s = start
-                pre = None
                 for _ in range(k):
-                    nxt = start.next
-                    start.next = pre
-                    pre = start
-                    start = nxt
-                # 前一轮反转后的尾巴，指向本轮反转后的头
-                if pre_s:
-                    pre_s.next = pre
-                pre_s = s
-                # 是否发生反转影响结果
-                if ans is None:
-                    ans = pre
-        # 存在剩余未反转部分
-        if cnt > 0 and pre_s:
-            pre_s.next = start
+                    tmp = t.next
+                    t.next = pre
+                    pre = t
+                    t = tmp
 
-        return ans or head
+            # 前面反转后的尾巴
+            if p:
+                p.next = pre if cnt == k else f
+            p = f
 
-    # def reverseLinkList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-    #     """
-    #     反转链表，用来参考反转，题：LCR 024
-    #     快慢指针来反转
-    #     """
-    #     # space cases
-    #     if head is None or head.next is None:
-    #         return head
+            # 结果记录
+            if ans is None:
+                ans = pre if cnt == k else f
+        return ans
 
-    #     pre = head
-    #     cur = head.next
-    #     pre.next = None   # 头节点变尾节点，next置空
-    #     while cur:
-    #         tmp = cur.next  # 守卫，防止丢失cur.next
-    #         cur.next = pre
-    #         pre = cur
-    #         cur = tmp
-    #     return pre
+
+b = ListNode(5)
+c = ListNode(4, b)
+d = ListNode(3, c)
+e = ListNode(2, d)
+f = ListNode(1, e)
+Solution().reverseKGroup(f, 3)

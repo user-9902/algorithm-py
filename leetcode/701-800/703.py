@@ -1,7 +1,7 @@
 """
 @title:      703. 数据流中的第 K 大元素
 @difficulty: 简单
-@importance: 1/5  重复
+@importance: 0/5  重复的题。
 @tags:       优先队列 sort
 """
 from typing import List

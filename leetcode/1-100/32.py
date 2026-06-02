@@ -1,6 +1,10 @@
 """
-32. 最长有效括号
+@title:      32. 最长有效括号
+@difficulty: 中等
+@importance: 4/5
+@tags:       栈 dp
 """
+
 
 class Solution:
     def longestValidParentheses(self, s: str) -> int:
@@ -50,17 +54,17 @@ class Solution:
                     dp[i - 1] + 2 表示 ...((...)) 中 ((...)) 的长度
                     dp[i - dp[i - 1] - 2] 表示当前情况是否紧跟在一个合法串后面,即 ...((...)) 中 ... 的长度
         """
-        s_len= len(s)
-        dp = [0] * s_len
-        
-        max_len = 0
-        for i,v in enumerate(s):
+        n = len(s)
+        dp = [0] * n
+
+        res = 0
+        for i, v in enumerate(s):
             if i > 0 and v == ')':
                 if s[i - 1] == '(':
-                    dp[i] = (dp[i - 2] if i > 1 else 0)  + 2
+                    dp[i] = (dp[i - 2] if i > 1 else 0) + 2
                 elif dp[i - 1] > 0 and i - dp[i - 1] > 0 and s[i - dp[i - 1] - 1] == '(':
-                    dp[i] = (dp[i - dp[i - 1] - 2] if i - dp[i - 1] > 1 else 0) + dp[i - 1] + 2
-                
-                max_len = max(max_len, dp[i])
-        return max_len
+                    dp[i] = (dp[i - dp[i - 1] - 2] if i -
+                             dp[i - 1] > 1 else 0) + dp[i - 1] + 2
 
+                res = max(res, dp[i])
+        return res

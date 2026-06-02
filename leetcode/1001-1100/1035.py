@@ -1,9 +1,8 @@
 """
-1035. 不相交的线
-LCS, dp
-题目完全等价于最长公共子序列
-区间dp
-dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+@title:      1035. 不相交的线
+@difficulty: 中等
+@importance: 4/5
+@tags:       dp
 """
 from typing import List
 
@@ -11,21 +10,20 @@ from typing import List
 class Solution:
     def maxUncrossedLines(self, nums1: List[int], nums2: List[int]) -> int:
         """
-        压缩至一维
+        @tags:              dp
+        @time complexity:   O(nm)
+        @space complexity:  O(m)
+        @description:       最公共子序列LCS模板题,见leetcode 1143
         """
-        n = len(nums1)
-        m = len(nums2)
-
+        n, m = len(nums1), len(nums2)
         f = [0] * (m + 1)
-
-        for i, x in enumerate(nums1):
+        for i in range(n):
             pre = 0
-            for j, y in enumerate(nums2):
-                tmp = f[j+1]
-                f[j+1] = pre + 1 if x == y else max(f[j+1], f[j])
+            for j in range(m):
+                tmp = f[j + 1]
+                if nums1[i] == nums2[j]:
+                    f[j + 1] = pre + 1
+                else:
+                    f[j + 1] = max(f[j + 1], f[j])
                 pre = tmp
-
-        return f[-1]
-
-
-Solution.maxUncrossedLines([2, 5, 1, 2, 5], [10, 5, 2, 1, 5, 2])
+        return f[m]

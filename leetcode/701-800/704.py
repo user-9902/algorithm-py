@@ -63,6 +63,3 @@ class Solution:
                 r = mid + 1  # [l, mid+1)
 
         return l if nums[l] == target else -1
-
-
-Solution().search([-1, 0, 3, 5, 9, 12], 9)

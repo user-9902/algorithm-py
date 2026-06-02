@@ -22,18 +22,18 @@ class Solution:
         @space complexity:  O(n)
         @description:       bfs
         """
-        stack = [root]
-        while stack:
+        queue = [root]
+        while queue:
             pre = None
-            n = len(stack)
+            n = len(queue)
             # 💲bfs 独立的遍历每一层 无需额外空间存储层级
             for _ in range(n):
-                cur = stack.pop(0)
+                cur = queue.pop(0)
                 if cur is None:
                     continue
                 if pre:
                     pre.next = cur
                 pre = cur
-                stack.append(cur.left)
-                stack.append(cur.right)
+                queue.append(cur.left)
+                queue.append(cur.right)
         return root

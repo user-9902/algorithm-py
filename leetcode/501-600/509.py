@@ -2,10 +2,11 @@
 @title:      509. 斐波那契数
 @difficulty: 简单
 @importance: 5/5
-@tags:       dp 迭代
+@tags:       dp 迭代 线性代数
 """
 
 from functools import cache
+import numpy as np
 
 
 class Solution:
@@ -66,3 +67,31 @@ class Solution:
         for i in range(2, n + 1):
             f[i % 2] = f[0] + f[1]
         return f[n % 2]
+
+    def fib(self, n: int) -> int:
+        """
+        @tags:              dp + 优化空间复杂度
+        @time complexity:   O(n)
+        @space complexity:  O(1)
+        @description:       同斐波那契额数列 我们只依赖前两种状态
+        """
+        def matrix_power_iterative(matrix, power):
+            result = np.eye(len(matrix), dtype=object)
+            while power > 0:
+                if power % 2 == 1:
+                    result = np.dot(result, matrix)
+                matrix = np.dot(matrix, matrix)
+                power //= 2
+            return result
+
+        def fib_matrix(n):
+            if n == 0:
+                return 0
+            fib_matrix = np.array([[1, 1], [1, 0]], dtype=object)
+            result_matrix = matrix_power_iterative(fib_matrix, n-1)
+            return int(np.dot(result_matrix, np.array([1, 0]))[0])
+
+        # Test the function with some values of n
+        test_values = [0, 1, 2, 3, 4, 5, 10, 20]
+        results = {n: fib_matrix(n) for n in test_values}
+        results

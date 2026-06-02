@@ -1,6 +1,6 @@
 """
 name:       268. 丢失的数字
-difficulty: 1/5
+difficulty: 简单
 importance: 3/5
 tags:       sort math 位运算
 """

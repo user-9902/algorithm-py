@@ -1,7 +1,7 @@
 """
 @title:      49. 字母异位词分组
 @difficulty: 简单
-@importance: 4/5
+@importance: 5/5
 @tags:       hashmap
 """
 

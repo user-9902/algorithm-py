@@ -27,6 +27,3 @@ class Solution:
             return -(2 ** 31)
 
         return res * sign
-
-
-Solution().myAtoi("-91283472332")

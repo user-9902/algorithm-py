@@ -1,39 +1,48 @@
 """
-51. N 皇后
-dfs问题。
-在dfs遍历的时候，修剪掉不可能的状态。分别需要修剪列，对角线，反对角线
-
-参考自 https://www.bilibili.com/video/BV17L4y1g7es/?spm_id_from=333.788&vd_source=51614d2a49bfb1ec0bdf64b53b2dacd5
-列重复很容易想到，而截距重复实在是精妙
+@title:      51. N 皇后 I
+@difficulty: 中等
+@importance: 5/5
+@tags:       回溯算法
 """
 from typing import List
 
 
 class Solution:
-    def solveNQueens(self, n: int) -> List[List[str]]:
-        stage = ['.'*n]*n
-        res = []
-        col = [False] * n  # 当前列上是否有棋子
-        dg = [False] * 2 * n  # 当前斜线上是否有棋子 y = x + n
-        udg = [False] * 2 * n  # 当前反斜杠上是否已经有棋子 y = -x + n
+    def totalNQueens(self, n: int) -> List[List[str]]:
+        """
+        @tags:              dfs 回溯算法 math
+        @time complexity:   O(n^2)
+        @space complexity:  O(n)
+        @description:       枚举所有排列组合的可能，确保枚举的可能不破坏规则。枚举行上的可能，确保同一列上无重复，同一斜线上无重复。
+        """
+        f = ["." * n] * n
+        # 列上是否已经有Q
+        col = [False] * n
+        # 正斜边上是否已经有Q 斜线上是否重复用截距计算
+        deg = [False] * 2 * n
+        # 负斜边上是否已经有Q
+        udeg = [False] * 2 * n
 
-        def dfs(x: int):
-            print(x, n)
-            if x == n:
-                # 最后一个棋子能放入即是一种解
-                res.append(True)
-            for y in range(n):
-                if col[y] or dg[y + x] or udg[y - x + n]:
+        ans = []
+
+        def dfs(i):
+            if i == n:
+                return
+
+            for j in range(n):
+                if col[j] or deg[n - i + j] or udeg[i + j]:
                     continue
-                col[y] = dg[y + x] = udg[y - x + n] = True
-                stage[x] = '.'*y + 'Q' + '.'*(n - y - 1)
-                dfs(x + 1)  # 遍历下一行
+                f[i] = f[i][:j] + "Q" + f[i][j + 1:]
+                if i == n - 1:
+                    ans.append(f[::])
+                col[j] = udeg[i + j] = deg[n - i + j] = True
+                dfs(i + 1)
                 # 状态回溯
-                stage[x] = '.'*n
-                col[y] = dg[y + x] = udg[y - x + n] = False
+                col[j] = udeg[i + j] = deg[n - i + j] = False
+                f[i] = "." * n
 
         dfs(0)
-        return len(res)
+        return ans
 
 
-Solution().solveNQueens(n=4)
+Solution().totalNQueens

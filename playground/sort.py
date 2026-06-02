@@ -178,18 +178,18 @@ class Sort:
             if largest != i:
                 # 交换
                 arr[i], arr[largest] = arr[largest], arr[i]  # 交换
-                # 被交换节点重新构建堆
+                # 被交换节点的堆结构被破坏了，重新堆化
                 heapify(arr, n, largest)
 
         n = len(arr)
         # 初始化堆 O(n)
-        for i in range(n, -1, -1):
+        for i in range(n // 2 - 1, -1, -1):
             heapify(arr, n, i)
 
         # 一个个从堆顶取出最大元素 O(nlogn)
         for i in range(n-1, 0, -1):
             arr[i], arr[0] = arr[0], arr[i]   # 最大元素置于尾部
-            heapify(arr, i, 0)  # logn
+            heapify(arr, i, 0)  # 保持堆结构 logn
 
     # -------------- 上述排序都是基于比较的，下面的不是 ---------------#
     def counting_sort(self, arr: List[int]) -> List[int]:

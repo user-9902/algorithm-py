@@ -2,7 +2,7 @@
 @title:      11. 盛最多水的容器
 @difficulty: 中等
 @importance: 5/5
-@tags:       双指针 贪心
+@tags:       贪心 双指针
 """
 from typing import List
 

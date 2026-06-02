@@ -13,7 +13,7 @@ class Solution:
         @tags:              dp
         @time complexity:   O(n^2)
         @space complexity:  O(n)  
-        @description:       f[i] = f[i-k] and s[k:i] in set
+        @description:       f[i] = f[i-k] and s[k:j] in set
         """
         n = len(s)
         f = [False] * (n + 1)

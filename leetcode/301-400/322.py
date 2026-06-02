@@ -1,8 +1,8 @@
 """
 @title:      322. 零钱兑换
 @difficulty: 中等
-@importance: 5/5
-@tags:       greedy
+@importance: 4/5
+@tags:       dp
 """
 
 from typing import List
@@ -13,7 +13,7 @@ from math import inf
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         """
-        @tags:              递归
+        @tags:              背包dp
         @time complexity:   O(nk)
         @space complexity:  O(nk)
         @description:       完全背包

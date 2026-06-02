@@ -34,20 +34,20 @@ class Solution:
 
     def integerReplacement(self, n: int) -> int:
         """
-        @tags:              bfs
+        @tags:              dfs
         @time complexity:   O(logn)
         @space complexity:  O(logn)
-        @description:       bfs
+        @description:       dfs
         """
         @cache
-        def bfs(n, step):
+        def dfs(n, step):
             if n == 1:
                 return step
             if n % 2 == 0:
-                return bfs(n//2, step + 1)
+                return dfs(n//2, step + 1)
             else:
-                return min(bfs(n-1, step+1), bfs(n+1, step+1))
-        return bfs(n, 0)
+                return min(dfs(n-1, step+1), dfs(n+1, step+1))
+        return dfs(n, 0)
 
     def integerReplacement(self, n: int) -> int:
         """

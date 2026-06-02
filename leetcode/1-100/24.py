@@ -1,7 +1,8 @@
 """
-24. 两两交换链表中的节点
-ListNode
-注意头节点为空的情况即可
+@title:      24. 两两交换链表中的节点
+@difficulty: 中等
+@importance: 5/5
+@tags:       链表
 """
 
 # Definition for singly-linked list.

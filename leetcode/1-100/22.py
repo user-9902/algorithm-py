@@ -1,7 +1,8 @@
 """
-22. 括号生成
-bfs; 回溯
-每一步可以添加左括号或右括号，同时添加的右括号数量不能超过左括号数量
+@title:      22. 括号生成
+@difficulty: 简单
+@importance: 4/5
+@tags:       dfs 回溯
 """
 
 from typing import List
@@ -9,26 +10,27 @@ from typing import List
 
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
+        """
+        @tags:              回溯 dfs
+        @time complexity:   
+        @space complexity:  
+        @description:       枚举可能
+        """
         ans = []
-        cur = '('
-        max_r = n
-        max_l = n+1
+        s = ""
 
-        def bfs(r=1, l=0):
-            nonlocal cur
-            # 每一步可以添加左括号或右括号
-            if r == max_r and l == max_r:
-                ans.append(cur)
-                return
-            if r < max_r:
-                cur += '('
-                bfs(r+1, l)
-                cur = cur[:-1]
-            # 限制条件 未加入左括号的时候不能添加右括号
-            if l < max_l and r > l:
-                cur += ')'
-                bfs(r, l+1)
-                cur = cur[:-1]
-        bfs()
+        def dfs(left, right):
+            nonlocal s
+            if left == n and right == n:
+                ans.append(s)
+            if left < n:
+                s += "("
+                dfs(left + 1, right)
+                s = s[:-1]
+            if right < left and right < n:
+                s += ")"
+                dfs(left, right + 1)
+                s = s[:-1]
 
+        dfs(0, 0)
         return ans

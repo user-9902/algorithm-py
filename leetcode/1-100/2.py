@@ -1,7 +1,7 @@
 """
 name:       2. 两数相加
 difficulty: 简单
-importance: 3/5
+importance: 5/5
 tags:       math
 """
 

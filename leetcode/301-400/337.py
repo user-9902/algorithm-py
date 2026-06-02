@@ -1,8 +1,8 @@
 """
-37. 打家劫舍 III
-dp
-max(node) = 当前节点不选 + 左子树最大值 + 右子树最大值
-            当前节点选 + 左子树不选根节点 + 右子树不选根节点
+@title:      337. 打家劫舍 III
+@difficulty: 中等
+@importance: 5/5
+@tags:       dp dfs
 """
 
 from typing import Optional
@@ -17,6 +17,14 @@ class TreeNode:
 
 class Solution:
     def rob(self, root: Optional[TreeNode]) -> int:
+        """
+        @tags:              dfs dp
+        @time complexity:   O(n)
+        @space complexity:  O(n)    
+        @description:       同打家劫舍I一样，当前节点可以选，可以不选。
+                            max(i)= 当前节点不选 + 左子树最大值 + 右子树最大值
+                                    当前节点选 + 左子树不选根节点 + 右子树不选根节点
+        """
         # 后序遍历
         def dfs(node):
             # 终止条件

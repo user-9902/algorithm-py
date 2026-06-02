@@ -9,9 +9,9 @@
 class Solution:
     def checkValidString(self, s: str) -> bool:
         """
-        @tags:              dp
+        @tags:              区间dp
         @time complexity:   O(n^2)   
-        @space complexity:  O(n^2)  💲这里是斜着遍历二维数组的，无法压缩状态
+        @space complexity:  O(n^2)
         @description:       如下注释
         """
         n = len(s)

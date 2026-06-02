@@ -1,10 +1,9 @@
 """
-13. 罗马数字转整数
-difficulty: 简单
-importance: 3/5
-tags:       数组
+@title:      13. 罗马数字转整数
+@difficulty: 简单
+@importance: 3/5
+@tags:       数组
 """
-
 
 NUMS = (1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000)
 ROMANS = ("I", "IV", "V", "IX", "X", "XL",

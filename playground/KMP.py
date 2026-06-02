@@ -94,7 +94,8 @@ def get_child_str(s: str, t: str) -> int:
             return i - m + 1
     return -1
 
-
 """
 可以借助 leetcode 28 来验证
 """
+
+print(kmp_next('aabaa'))

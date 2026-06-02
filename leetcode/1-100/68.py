@@ -1,12 +1,22 @@
 """
-68. 文本左右对齐
-遍历words，当前word无法塞入前面word组成的行时，生成一行即可。
-
-看到题目第一反应是：text-align: justify; 前端之魂觉醒了[doge]
+@title:      68. 文本左右对齐
+@difficulty: 中等
+@importance: 4/5
+@tags:       边界分析
 """
+
+"""
+应用题
+向 cur 中不断加入字符串, 
+    当前字符串的加入: 未超过了最大限制 继续
+                     超过最大限制 cur加入结果数组, cur=""
+    最后一行特殊处理
+"""
+
+
+
+
 from typing import List
-
-
 class Solution:
     def fullJustify(self, words: List[str], maxWidth: int) -> List[str]:
         n = len(words)

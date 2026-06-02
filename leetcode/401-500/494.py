@@ -20,10 +20,11 @@ b = （target + sum） / 2
 即数组中挑出几个元素，使其和为 （target + sum） / 2 时，即满足题意
 """
 
+
+
+
 from typing import List
 from functools import cache
-
-
 class Solution:
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
         """
@@ -62,12 +63,63 @@ class Solution:
         n = len(nums)
 
         @cache
-        def dfs(i, c):
-            if i < 0:
-                return 1 if c == 0 else 0
-            if c < nums[i]:
-                return dfs(i-1, c)
-            # 选或者不选
-            return dfs(i-1, c) + dfs(i-1, c - nums[i])
+        def dfs(i, pre):
+            if i == n:
+                return int(pre == target)
+            return dfs(i + 1, pre + nums[i]) + dfs(i + 1, pre - nums[i])
 
-        return dfs(n-1, target)
+        return dfs(0, 0)
+
+    def findTargetSumWays(self, nums: List[int], target: int) -> int:
+        """
+        @tags:              递归 dfs
+        @time complexity:   O(n^2)
+        @space complexity:  O(n^2)
+        @description:       01背包解的递归
+        """
+        t = sum(nums) + target
+        # 无解
+        if t % 2 or t < 0:
+            return 0
+        t >>= 1
+        n = len(nums)
+
+        @cache
+        def dfs(i, t):
+            if i < 0:
+                return int(t == 0)
+            if nums[i] > t:
+                return dfs(i-1, t)
+            else:
+                return dfs(i-1, t - nums[i]) + dfs(i-1, t)
+
+        return dfs(n-1, t)
+
+    def findTargetSumWays(self, nums: List[int], target: int) -> int:
+        """
+        @tags:              dp
+        @time complexity:   O(n^2)
+        @space complexity:  O(n^2)
+        @description:       将上方01的思路翻译为dp
+        """
+        t = sum(nums) + target
+        # 无解
+        if t % 2 or t < 0:
+            return 0
+        t >>= 1
+        n = len(nums)
+
+        f = [[0] * (t + 1) for _ in range(n + 1)]
+        # 从上一解递归中的边界条件得出这里的初始条件
+        f[0][0] = 1
+        for i in range(n):
+            for j in range(t + 1):
+                if j < nums[i]:
+                    f[i + 1][j] = f[i][j]
+                else:
+                    f[i + 1][j] = f[i][j] + f[i][j - nums[i]]
+
+        return f[n][t]
+
+
+Solution().findTargetSumWays([1, 1, 1, 1, 1], 3)

@@ -24,4 +24,8 @@ class Solution:
             if l == 0 or l == numRows - 1:
                 dire = -dire
             l += dire
+        print(arrs)
         return "".join(arrs)
+
+
+Solution().convert("PAYPALISHIRING", 3)

@@ -1,14 +1,20 @@
 """
-213. 打家劫舍 II
-同打家劫舍Ⅰ
-因为形成了环，这里考虑从节点一进行切割
-既分别考虑，选择第一家，不选择第一家的情况
+@title:      213. 打家劫舍 II
+@difficulty: 中等
+@importance: 5/5
+@tags:       dp
 """
 from typing import List
 
 
 class Solution:
     def rob(self, nums: List[int]) -> int:
+        """
+        @tags:              dp
+        @time complexity:   O(n)
+        @space complexity:  O(n)    
+        @description:       环状的数据导致我们无法下手，找不到初始状态。这里我们人为创造初始状态，第一个元素选，第一个元素不选，然后就同打家劫舍I 
+        """
         n = len(nums)
 
         if n < 3:

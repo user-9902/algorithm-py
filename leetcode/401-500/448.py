@@ -2,7 +2,7 @@
 name:       448. 找到所有数组中消失的数字
 difficulty: 简单
 importance: 3/5
-tags:       hashmao
+tags:       hashmap
 """
 from typing import List
 from sortedcontainers import SortedSet

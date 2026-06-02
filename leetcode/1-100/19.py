@@ -1,8 +1,8 @@
 """
-19. 删除链表的倒数第 N 个结点
-difficulty: 简单
-importance: 5/5
-tags:       双指针
+@title:      19. 删除链表的倒数第 N 个结点
+@difficulty: 简单
+@importance: 5/5
+@tags:       快慢指针
 """
 
 # Definition for singly-linked list.
