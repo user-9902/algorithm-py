@@ -19,6 +19,7 @@ class Solution:
         # [left, right]
         l = 0
         r = len(nums) - 1
+        # l=r时闭区间内任有元素继续
         while l <= r:
             mid = (l+r) // 2
             if nums[mid] > target:  # r 在该条件的限制下，最终会满足 nums[r] <= target
@@ -35,9 +36,10 @@ class Solution:
         # target 落在 [left, right)区间中
         l = 0
         r = len(nums)
+        # l=r时左闭右开区间内无元素
         while l < r:
             mid = (l+r) // 2
-            if nums[mid] < target:
+            if nums[mid] < target: # 确保 nums[l] >= target
                 l = mid + 1  # [mid+1, right)
             else:
                 r = mid  # [l, mid)

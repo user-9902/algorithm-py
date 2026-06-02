@@ -1,7 +1,7 @@
 """
 @title:      238. 除自身以外数组的乘积
 @difficulty: 简单
-@importance: 4/5
+@importance: 3/5
 @tags:       前缀和
 """
 from typing import List
@@ -14,7 +14,7 @@ class Solution:
         @tags:              前缀和
         @time complexity:   O(n)
         @space complexity:  O(n)
-        @description:       算出i位置的前缀乘积和后缀乘积。
+        @description:       前缀积 * 后缀积
         """
         n = len(nums)
         pre = [1] * n

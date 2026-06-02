@@ -22,13 +22,14 @@ class Solution:
         pre = a = b = defend
 
         while True:
-            # 存在练习两个后续节点
             if a.next is None or a.next.next is None:
                 break
+            # 存在连续两个后续节点
+            # 移动到对应位置
             pre = a
             a = pre.next
             b = a.next
-
+            # 改动指针指向
             pre.next = b
             a.next = b.next
             b.next = a

@@ -13,7 +13,7 @@ class Solution:
         @tags:              二分
         @time complexity:   O(logn)
         @space complexity:  O(1)
-        @description:       题目要寻找 <= target的下标
+        @description:       题目要寻找 >= target的下标
         """
         n = len(nums)
         l = 0
