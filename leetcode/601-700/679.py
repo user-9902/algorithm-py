@@ -1,8 +1,8 @@
 """
 @title:      679. 24 点游戏
 @difficulty: 中等
-@importance: 5/5
-@tags:       回溯
+@importance: 4/5
+@tags:       DFS
 """
 from typing import List
 
@@ -10,44 +10,34 @@ from typing import List
 class Solution:
     def judgePoint24(self, cards: List[int]) -> bool:
         """
-        @tags:              回溯
-        @time complexity:   O(1) 数据规模确定共 9216 种可能
-        @space complexity:  O(1) 额外3个数组来存储
+        @tags:              DFS 浮点误差
+        @time complexity:   O(n! * 6^n)
+        @space complexity:  O(n^2)
         @description:       如下注释
         """
+        EPS = 1e-9  # 精度误差
 
-        def dfs(arr):
-            n = len(arr)
-            if n == 0:
-                return False
+        def dfs(cards2):
+            n = len(cards2)
             if n == 1:
-                # 考虑浮点精度
-                return abs(arr[0] - 24) < 1e-6
-            # 任意选两个不同的数
-            for i, a in enumerate(arr):
-                for j, b in enumerate(arr):
-                    if i == j:
-                        continue
-                    # 下一轮
-                    arr2 = []
-                    for k, x in enumerate(arr):
-                        if k != i and k != j:
-                            arr2.append(x)
-                    # 遍历所有的 a b 的运算结果
-                    for cmd in range(4):
-                        if cmd == 0:
-                            arr2.append(a + b)
-                        elif cmd == 1:
-                            arr2.append(a - b)
-                        elif cmd == 2:
-                            arr2.append(a * b)
-                        elif cmd == 3:
-                            # 分母不为 0
-                            if abs(b) < 1e-6:
-                                continue
-                            arr2.append(a / b)
-                        if dfs(arr2):
+                return abs(cards2[0] - 24) < EPS
+            # 随机挑两个数
+            for i, x in enumerate(cards2):
+                for j in range(i+1, n):
+                    y = cards2[j]
+                    # 加法乘法可互换位置、减法、除法不可以
+                    r = [x + y, x * y, x - y, y - x]
+                    # 除法还需保证分母不为0
+                    if abs(y) > EPS:
+                        r.append(x / y)
+                    if abs(x) > EPS:
+                        r.append(y / x)
+
+                    # 深度遍历
+                    n_cards2 = cards2[:j] + cards2[j+1:]
+                    for v in r:
+                        n_cards2[i] = v  # j 删掉 i 替换掉
+                        if dfs(n_cards2):
                             return True
-                        arr2.pop()
             return False
         return dfs(cards)
