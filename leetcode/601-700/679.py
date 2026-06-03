@@ -1,7 +1,7 @@
 """
 @title:      679. 24 点游戏
 @difficulty: 中等
-@importance: 5/5
+@importance: 4/5
 @tags:       DFS
 """
 from typing import List
@@ -36,9 +36,8 @@ class Solution:
                     # 深度遍历
                     n_cards2 = cards2[:j] + cards2[j+1:]
                     for v in r:
-                        n_cards2[i] = v  # 删去两个元素 添加一个元素 可以这样优化空间复杂度
+                        n_cards2[i] = v  # j 删掉 i 替换掉
                         if dfs(n_cards2):
                             return True
-
             return False
         return dfs(cards)

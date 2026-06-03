@@ -2,7 +2,6 @@
 514. 自由之路
 dp
 本题局部最优解并不是全局最优解 如 从 abccccdbe 找 abd
-个人感觉，挺抽象的一道题
 """
 
 from math import inf

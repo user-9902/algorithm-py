@@ -18,6 +18,7 @@ class Solution:
         """
         n = len(intervals)
         intervals.sort()
+        
         ans = []
         cur = intervals[0]
         for i in range(1, n):
