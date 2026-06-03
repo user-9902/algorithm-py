@@ -2,7 +2,7 @@
 @title:      139. 单词拆分
 @difficulty: 中等
 @importance: 4/5
-@tags:       hasmap dp
+@tags:       dp
 """
 from typing import List
 

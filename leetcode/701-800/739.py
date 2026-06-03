@@ -1,12 +1,20 @@
 """
-739. 每日温度
-单调栈
+@title:      739. 每日温度
+@difficulty: 简单
+@importance: 5/5
+@tags:       单调栈
 """
-from typing import List
 
+from typing import List
 
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        """
+        @tags:              单调栈
+        @time complexity:   O(n)
+        @space complexity:  O(n)
+        @description:       单调递减栈，栈里存的是下标
+        """
         stack = []
 
         ans = [0] * len(temperatures)

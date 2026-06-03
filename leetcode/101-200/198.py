@@ -32,7 +32,7 @@ class Solution:
         @tags:              dp
         @time complexity:   O(n)
         @space complexity:  O(n)    f[i] 依赖于 f[i-1] f[i-2] 所以可优化至 O(1)
-        @description:       第i个元素可选，可不选。f[i] = max(f[i-1], f[i-2] + nums[i])
+        @description:       当前这家可偷或不偷。f[i] = max(f[i-1], f[i-2] + nums[i])
         """
         n = len(nums)
         if n < 3:

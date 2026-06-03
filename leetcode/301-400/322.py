@@ -1,7 +1,7 @@
 """
 @title:      322. 零钱兑换
 @difficulty: 中等
-@importance: 4/5
+@importance: 5/5
 @tags:       dp
 """
 

@@ -2,7 +2,7 @@
 @title:      买卖股票的最佳时机 I
 @difficulty: 简单
 @importance: 3/5
-@tags:       
+@tags:       贪心
 """
 from typing import List
 

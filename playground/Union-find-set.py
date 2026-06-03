@@ -1,7 +1,7 @@
 """
 @title:      并查集
 @difficulty: 中等
-@importance: 6/5
+@importance: 5/5
 @tags:       并查集
 """
 

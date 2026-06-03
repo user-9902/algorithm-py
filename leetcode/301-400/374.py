@@ -1,7 +1,7 @@
 """
 @title:      374. 猜数字大小
 @difficulty: 简单
-@importance: 5/5
+@importance: 3/5
 @tags:       二分
 """
 import random

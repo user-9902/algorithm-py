@@ -2,7 +2,7 @@
 @title:      31. 下一个排列
 @difficulty: 中等
 @importance: 5/5
-@tags:       分析
+@tags:       技巧
 """
 from typing import List
 from math import inf
@@ -17,6 +17,7 @@ class Solution:
         @description:       见注释
         """
         # 从后向前寻找第一个非递增的下标，改下标即为需交换的第一个下标
+        # 一串数字，从后往前递增表明这是最大的排序
         n = len(nums)
         i = n - 2
         while i > -1:

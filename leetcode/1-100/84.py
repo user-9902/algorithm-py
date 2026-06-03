@@ -1,7 +1,7 @@
 """
 @title:      84. 柱状图中最大的矩形
-@difficulty: 困难
-@importance: 5/5
+@difficulty: 中等
+@importance: 4/5
 @tags:       单调栈
 """
 from typing import List
@@ -32,6 +32,7 @@ class Solution:
         @time complexity:   O(n)
         @space complexity:  O(n)
         @description:       fs的瓶颈在寻找宽度上，我们使用单调栈来快速找到宽度。本题和接雨水相似。
+                            前置题 leetcode739
         """
         n = len(heights)
         left = [-1] * n

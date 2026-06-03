@@ -59,6 +59,6 @@ class Solution:
                 if word1[i] == word2[j]:
                     f[i + 1][j + 1] = f[i][j]
                 else:
-                    f[i + 1][j + 1] = min(f[i + 1][j], f[i]
-                                          [j + 1], f[i][j]) + 1
+                    # 三种情况，word1插入 word2插入 word1替换
+                    f[i + 1][j + 1] = min(f[i + 1][j], f[i][j + 1], f[i][j]) + 1
         return f[n][m]

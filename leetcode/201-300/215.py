@@ -2,7 +2,7 @@
 name:       215. 数组中的第K个最大元素
 difficulty: 中等
 importance: 5/5
-tags:       sort
+tags:       sort 分治
 """
 from typing import List
 import heapq
@@ -68,7 +68,7 @@ class Solution:
             """
         def fast_sort(l, r, k):
             x = r-1
-            counter = l  # ❌这里守卫元素的选择不好
+            counter = l  # ❌这里守卫元素的选择不好 应该随机挑选
             for i in range(l, r):
                 if nums[x] > nums[i]:
                     nums[i], nums[counter] = nums[counter],  nums[i]
@@ -84,3 +84,52 @@ class Solution:
 
         n = len(nums)
         return fast_sort(0, n, n - k)
+
+
+# # js 版本
+# function partition(nums, left, right) {
+#     const idx = left + Math.floor(Math.random() * (right - left + 1));
+#     const pivot = nums[idx];
+#     // 把 pivot 与子数组第一个元素交换，避免 pivot 干扰后续划分，从而简化实现逻辑
+#     [nums[idx], nums[left]] = [nums[left], nums[idx]];
+
+#     let i = left + 1, j = right;
+#     while (true) {
+#         while (i <= j && nums[i] < pivot) {
+#             i++;
+#         }
+#         while (i <= j && nums[j] > pivot) {
+#             j--;
+#         }
+#         if (i >= j) {
+#             break;
+#         }
+#         // 维持循环不变量
+#         [nums[i], nums[j]] = [nums[j], nums[i]];
+#         i++;
+#         j--;
+#     }
+
+#     [nums[left], nums[j]] = [nums[j], nums[left]];
+
+#     // 返回 pivot 的下标
+#     return j;
+# }
+
+# var findKthLargest = function(nums, k) {
+#     const n = nums.length;
+#     const targetIndex = n - k; // 第 k 大元素在升序数组中的下标是 n - k
+#     let left = 0, right = n - 1; // 闭区间
+#     while (true) {
+#         const i = partition(nums, left, right);
+#         if (i === targetIndex) {
+#             // 找到第 k 大元素
+#             return nums[i];
+#         }
+#         if (i > targetIndex) {
+#             right = i - 1;
+#         } else {
+#             left = i + 1;
+#         }
+#     }
+# };
