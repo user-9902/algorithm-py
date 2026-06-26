@@ -12,7 +12,7 @@ class Solution:
         @tags:              区间dp
         @time complexity:   O(n^2)   
         @space complexity:  O(n^2)
-        @description:       如下注释
+        @description:       如下注释 同最长回文串的实现
         """
         n = len(s)
         f = [[False] * n for _ in range(n)]

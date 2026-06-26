@@ -1,5 +1,8 @@
 """
 最短路径
+
+dijkstra 是一个点到其他所有点的最短路径
+floyd 是所有点到所有其他点点最短路径
 """
 from math import inf
 from typing import List

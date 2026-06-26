@@ -2,7 +2,7 @@
 @title:      167. 两数之和 II - 输入有序数组
 @difficulty: 简单
 @importance: 4/5
-@tags:       指针
+@tags:       指针 贪心
 """
 from typing import List
 
@@ -13,7 +13,8 @@ class Solution:
         @tags:              双指针
         @time complexity:   O(n)
         @space complexity:  O(1)
-        @description:       利用有序性，指针相向而行
+        @description:       利用有序性，指针相向而行。
+                            贪心：相向而行，排除掉的一定是不满足题意。
         """
         n = len(numbers)
         p1 = 0

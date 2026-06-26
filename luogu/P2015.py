@@ -21,7 +21,6 @@ class Node {
     }
 }
 
-
 cap, n = [int(i) for i in input().split()]
 
 groups = {}

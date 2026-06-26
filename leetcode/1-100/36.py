@@ -2,7 +2,7 @@
 @title:      36. 有效的数独
 @difficulty: 中等
 @importance: 3/5
-@tags:       状态压缩
+@tags:       业务分析 状态压缩
 """
 
 from typing import List
@@ -12,9 +12,9 @@ class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
         """
         @tags:              二进制状态压缩
-        @time complexity:   O(n) 空格数量
-        @space complexity:  O(n*n)
-        @description:       二进制压缩状态校验同行 同列 同3*3矩阵 是否重复  leetcode 37前置题
+        @time complexity:   O(9*9) 空格数量
+        @space complexity:  O(3*9) 可压缩至O(1)
+        @description:       二进制压缩状态校验同行 同列 同3*3矩阵 是否重复
         """
         u = (1 << 9) - 1
         col = [u] * 9

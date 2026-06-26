@@ -19,7 +19,7 @@ class Solution:
             n = -n
             x = 1 / x
         while n:
-            if n & 1:
+            if n & 1: # n视为二进制 100101
                 ans *= x  # 把 x^n 乘到 ans 中
             x *= x
             n >>= 1

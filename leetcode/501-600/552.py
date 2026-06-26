@@ -11,8 +11,8 @@ class Solution:
     def checkRecord(self, n: int) -> int:
         """
         @tags:              递归
-        @time complexity:   O(n^6)
-        @space complexity:  O(n)  ❌ 栈空间的复杂度为O(n)会溢出。分析题意的复杂度范围，需转化为dp再压缩维度
+        @time complexity:   O(n)
+        @space complexity:  O(n)  ❌ 栈空间的复杂度会溢出。分析题意的复杂度范围，需转化为dp再压缩维度
         """
         MOD = 10**9 + 7
 
@@ -36,8 +36,9 @@ class Solution:
     def checkRecord(self, n: int) -> int:
         """
         @tags:              dp
-        @time complexity:   O(n^6)
-        @space complexity:  O(n)   这里先转译成dp 下面再压缩状态
+        @time complexity:   O(n)     
+        @space complexity:  O(n)
+        @desc:              前置题 leetcode 122
         """
         MOD = 10 ** 9 + 7
         #   [[   无A             ],[ 有A            ]]
@@ -49,16 +50,20 @@ class Solution:
             # p结尾
             for j in range(2):
                 for k in range(3):
+                    # 当前以p结尾，变成连续0天迟到
                     f[i][j][0] = (f[i][j][0] + f[i-1][j][k]) % MOD
 
             # l结尾
             for j in range(2):
                 # 不能在2l结尾加l
                 for k in range(1, 3):
+                    # 当前以l结尾，迟到天数+1
                     f[i][j][k] = (f[i][j][k] + f[i-1][j][k-1]) % MOD
 
             # A结尾
             for k in range(3):
+                # 当前以A结尾，只能添加到没迟到的结尾。
+                # 同时注意迟到天数变为 0
                 f[i][1][0] = (f[i][1][0] + f[i-1][0][k]) % MOD
 
         ans = 0
@@ -70,8 +75,8 @@ class Solution:
     def checkRecord(self, n: int) -> int:
         """
         @tags:              dp
-        @time complexity:   O(n^6)
-        @space complexity:  O(1)
+        @time complexity:   O(n)     
+        @space complexity:  O(n)
         @description:       滚动数组压缩
         """
         MOD = 10 ** 9 + 7

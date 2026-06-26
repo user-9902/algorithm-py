@@ -29,3 +29,9 @@ class Solution:
                 if cuboids[i][0] >= cuboids[j][0] and cuboids[i][1] >= cuboids[j][1] and cuboids[i][2] >= cuboids[j][2]:
                     f[i] = max(f[i], f[j] + cuboids[i][2])
         return max(f)
+    
+    def maxHeight(self, cuboids: List[List[int]]) -> int:
+        """
+        @description:       分组背包。将每个长方体分为3类 长度 宽度 高度。我们只能从中选一种
+        """
+        # 实现省略

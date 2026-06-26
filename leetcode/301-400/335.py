@@ -1,8 +1,8 @@
 """
-@title:      318. 最大单词长度乘积
-@difficulty: 简单
+@title:      335. 路径交叉
+@difficulty: 困难
 @importance: 4/5
-@tags:       位运算
+@tags:       
 """
 from typing import List
 
@@ -10,12 +10,10 @@ from typing import List
 class Solution:
     def isSelfCrossing(self, distance: List[int]) -> bool:
         """
-        @tags:              fs 位运算优化
-        @time complexity:   O(n^2)
-        @space complexity:  O(n)
+        @tags:              
+        @time complexity:   
+        @space complexity:  
         @description:       
         """
-        return
+        pass
 
-
-Solution().isSelfCrossing(["a", "ab", "abc", "d", "cd", "bcd", "abcd"])

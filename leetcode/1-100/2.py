@@ -2,7 +2,7 @@
 name:       2. 两数相加
 difficulty: 简单
 importance: 5/5
-tags:       math
+tags:       链表 math
 """
 
 from typing import Optional

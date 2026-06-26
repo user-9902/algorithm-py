@@ -1,7 +1,7 @@
 """
 @title:      279. 完全平方数
 @difficulty: 中等
-@importance: 4/5
+@importance: 3/5
 @tags:       dp
 """
 

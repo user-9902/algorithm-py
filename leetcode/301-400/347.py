@@ -10,8 +10,8 @@ class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         """
         @tags:              堆
-        @time complexity:   O(nlogn)   
+        @time complexity:   O(n)   
         @space complexity:  O(n)
-        @desc:              堆排序的思路，取出前k个元素即可
+        @desc:              二分 第k大的数
         """
         # 实现省略

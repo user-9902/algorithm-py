@@ -33,7 +33,7 @@ class Solution:
                             我们就用这一位数来区分 a 和 b 
         """
         xor_all = reduce(xor, nums)
-        bit = xor_all & -xor_all
+        bit = xor_all & -xor_all # a b中不同的一位
 
         # 确保了 a 和 b 在不同的两组中后 将 nums 分为两组，两组内的数分别求异或和
         ans = [0, 0]

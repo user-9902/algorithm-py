@@ -1,7 +1,8 @@
 """
-140. 单词拆分 II
-dfs
-这里还可以记忆化搜索优化
+@title:      140. 单词拆分 II
+@difficulty: 困难
+@importance: 4/5
+@tags:       dfs dp
 """
 
 from typing import List
@@ -9,7 +10,7 @@ from typing import List
 
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
-        # 记录下跨度，无需一个一个字符的遍历
+        # 记录下跨度，无需一个一个字符的遍历 退阶题见 leetcode 139
         step = {}
         for i in wordDict:
             step[len(i)] = True

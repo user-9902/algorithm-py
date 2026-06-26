@@ -15,13 +15,14 @@ class Solution:
         @description:       长除法 余数*10 
         """
         # 26 进制
-        ans = []
+        ans = ''
         a_i = ord("A")
         while num > 0:
-            num -= 1
-            ans.append(chr(a_i + (num % 26)))
+            num -= 1 # 这里的26位从1开始，因此需要-1
+            cur = num % 26
+            ans = chr(a_i + cur) + ans
             num //= 26
-        return "".join(ans[::-1])
+        return ans
 
 
 Solution().convertToTitle(701)

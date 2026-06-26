@@ -1,7 +1,7 @@
 """
 name:       波兰表达式
 difficulty: 困难
-importance: 3/5
+importance: 4/5
 tags:       波兰表达式 栈
 """
 

@@ -73,8 +73,9 @@ def kmp_next(string):
     next = [0] * n
     j = 0
     for i in range(1, n):
+        # 最关键的两行 dp体现
         while j > 0 and string[i] != string[j]:
-            j = next[j - 1]  # 最关键的一步 dp体现
+            j = next[j - 1]
         if string[i] == string[j]:
             j += 1
         next[i] = j
@@ -84,15 +85,17 @@ def kmp_next(string):
 def get_child_str(s: str, t: str) -> int:
     m = len(t)
     next = kmp_next(t)
-    j = 0
+    j = 0  # 记录成功匹配t的下标
     for i, v in enumerate(s):
         while j > 0 and t[j] != v:
             j = next[j - 1]
         if t[j] == v:
             j += 1
+        # 完全匹配
         if j == m:
             return i - m + 1
     return -1
+
 
 """
 可以借助 leetcode 28 来验证

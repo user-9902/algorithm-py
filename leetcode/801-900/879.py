@@ -37,7 +37,7 @@ class Solution:
         @tags:              递推
         @time complexity:   O(nmk)
         @space complexity:  O(nmk)   状态压缩同01背包
-        @description:       01背包
+        @description:       01背包 高一维的01背包
         """
         MOD = 10**9 + 7
         m = len(group)

@@ -21,18 +21,19 @@ class Solution:
         f[0] = 0 if s[0] == "0" else 1
 
         for i in range(n):
+            c = s[i]
             # 一个字符
             if i == 0:
-                f[i] = 9 if s[i] == "*" else 0 if s[i] == "0" else 1
+                f[i] = 9 if c == "*" else 0 if c == "0" else 1
             else:
-                f[i] = 9 * f[i - 1] if s[i] == "*" else 0 if s[i] == "0" else f[i - 1]
+                f[i] = 9 * f[i - 1] if c == "*" else 0 if c == "0" else f[i - 1]
             # 两个字符
             if i > 0:
-                if s[i] != "*":
-                    if s[i - 1] == "1" or (s[i - 1] == "2" and s[i] <= "6"):
+                if c != "*":
+                    if s[i - 1] == "1" or (s[i - 1] == "2" and c <= "6"):
                         f[i] += f[i - 2] if i > 1 else 1
                     if s[i - 1] == "*":
-                        if s[i] <= "6":
+                        if c <= "6":
                             f[i] += f[i - 2] * 2 if i > 1 else 2
                         else:
                             f[i] += f[i - 2] * 1 if i > 1 else 1

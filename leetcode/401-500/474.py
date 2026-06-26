@@ -14,7 +14,7 @@ class Solution:
         @tags:              递推
         @time complexity:   O(nmk)
         @space complexity:  O(nmk)
-        @description:       01背包 双容量限制背包
+        @description:       01背包变体 双容量限制背包 0有数量限制 1也有数量限制
         """
         length = len(strs)
         nums = [[0, 0] for _ in range(length)]

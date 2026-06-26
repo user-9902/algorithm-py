@@ -12,7 +12,7 @@ class Solution:
         @tags:              二分 快速乘
         @time complexity:   O(logn^2)
         @space complexity:  O(1)
-        @description:       二次查找结果，其中乘法验证的使用快速乘来避开直接使用乘法的限制
+        @description:       快速乘的实现同快速幂
         """
         INT_MIN, INT_MAX = -2**31, 2**31 - 1
 

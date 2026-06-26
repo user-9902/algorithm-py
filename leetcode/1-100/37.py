@@ -13,7 +13,7 @@ class Solution:
         @tags:              回溯 dfs 二进制状态压缩
         @time complexity:   O(9^k) 空格数量
         @space complexity:  O(k)
-        @description:       dfs 回溯
+        @description:       前置题 leetcode 36
         """
         # 位运算状态压缩
         u = (1 << 9) - 1

@@ -12,10 +12,10 @@ class NumMatrix:
 
     def __init__(self, matrix: List[List[int]]):
         """
-        @tags:              二维前缀和 画个图观察便于理解
+        @tags:              二维前缀和 
         @time complexity:   O(nm)
         @space complexity:  O(nm)
-        @description:       f[i][j] = f[i-1][j] + f[i][j-1] - f[i-1] + matrix[i][j]
+        @description:       画个图观察便于理解 f[i][j] = f[i-1][j] + f[i][j-1] - f[i-1] + matrix[i][j]
         """
         n, m = len(matrix), len(matrix[0])
         f = [[0] * (m + 1) for _ in range(n + 1)]

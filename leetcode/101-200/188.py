@@ -52,7 +52,7 @@ class Solution:
 
         for i, p in enumerate(prices):
             for j in range(1, k+2):
-                f[i+1][j][0] = max(f[i][j+1][0], f[i][j][1] + p)
-                f[i+1][j][1] = max(f[i][j+1][1], f[i][j-1][0] - p)
+                f[i+1][j][0] = max(f[i][j+1][0], f[i][j][1] + p) # 不操作 or 卖出
+                f[i+1][j][1] = max(f[i][j+1][1], f[i][j-1][0] - p) # 不操作 or 买入
 
         return f[-1][-1][0]

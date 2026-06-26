@@ -41,7 +41,7 @@ class Solution:
         @tags:              bfs
         @time complexity:   O(logn)
         @space complexity:  O(1)
-        @description:       观察bfs树，我们发现每个节点的子节点个数是确定的，这样就能利用bfs直接找到答案了
+        @description:       将所有可能想象成一颗树，观察bfs树，我们发现每个节点的子节点个数是确定的，这样就能利用bfs直接找到答案了
         """
         f = [1] * n
         for i in range(1, n):

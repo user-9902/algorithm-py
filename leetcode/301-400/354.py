@@ -37,7 +37,7 @@ class Solution:
         @space complexity:  O(n)  
         @description:       见下方
         """
-        # 最关键的就是这里的排序，宽相同的时候，高度倒序排列，确保了同宽的信封不会出现在递增子序列中
+        # 最关键的就是这里的排序，宽相同的时候，高度倒序排列。这样在宽度相同时，高度倒叙，就不会选到同宽的了。问题就退阶为最长递增子序列了
         envelopes.sort(key=lambda x: (x[0], -x[1]))
         n = len(envelopes)
         stack = [envelopes[0][1]]

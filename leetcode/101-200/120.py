@@ -3,6 +3,7 @@
 @difficulty: 中等
 @importance: 5/5
 @tags:       dp
+@desc:       三十年前的奥赛，如今的入门...
 """
 
 from typing import List
@@ -11,10 +12,6 @@ from math import inf
 
 
 class Solution:
-    """
-    三十年前的奥赛，如今的入门
-    """
-
     def minimumTotal(self, triangle: List[List[int]]) -> int:
         """
         @tags:              递归

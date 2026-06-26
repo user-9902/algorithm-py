@@ -3,7 +3,7 @@
 @difficulty: 中等
 @importance: 5/5
 @tags:       LPS
-@desc:       区别于最长回文子序列，这里要求的是最长回文子数组
+@desc:       同 leetcode 5
 """
 
 s = input()
